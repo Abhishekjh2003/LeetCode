@@ -5,16 +5,11 @@ class Solution {
         {
              total +=num;
         }
-
-
         int leftsum= 0;
 
         for(int i=0;i<nums.length;i++)
         {
             int rightsum  = total-leftsum-nums[i];
-
-
-
             if(leftsum==rightsum)
             {
                 return i;
