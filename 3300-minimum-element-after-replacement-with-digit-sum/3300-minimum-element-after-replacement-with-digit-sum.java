@@ -3,7 +3,7 @@ class Solution {
     public int minElement(int[] nums) {
 
        int fmin=Integer.MAX_VALUE;
-       
+
        for(int i=0;i<nums.length;i++)
        {
           int  res=sum(nums[i]);
@@ -25,10 +25,6 @@ class Solution {
             sum+=rem;
             num/=10;  
         }
-       return sum;
-
-    
-    }
-
-    
+       return sum; 
+    }    
 }
