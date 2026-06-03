@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
     public int earliestFinishTime(int[] landStartTime, int[] landDuration,
                                   int[] waterStartTime, int[] waterDuration) {
@@ -8,18 +7,14 @@ class Solution {
             solve(waterStartTime, waterDuration, landStartTime, landDuration)
         );
     }
-
     private int solve(int[] start1, int[] dur1, int[] start2, int[] dur2) {
         int m = start2.length;
         int[][] rides = new int[m][2];
-
         for (int i = 0; i < m; i++) {
             rides[i][0] = start2[i];
             rides[i][1] = dur2[i];
         }
-
         Arrays.sort(rides, (a, b) -> Integer.compare(a[0], b[0]));
-
         int[] prefixMinDuration = new int[m];
         int[] suffixMinFinish = new int[m];
 
@@ -27,7 +22,6 @@ class Solution {
         for (int i = 1; i < m; i++) {
             prefixMinDuration[i] = Math.min(prefixMinDuration[i - 1], rides[i][1]);
         }
-
         suffixMinFinish[m - 1] = rides[m - 1][0] + rides[m - 1][1];
         for (int i = m - 2; i >= 0; i--) {
             suffixMinFinish[i] = Math.min(
@@ -35,9 +29,7 @@ class Solution {
                 rides[i][0] + rides[i][1]
             );
         }
-
         int ans = Integer.MAX_VALUE;
-
         for (int i = 0; i < start1.length; i++) {
             int firstEnd = start1[i] + dur1[i];
             int idx = lowerBound(rides, firstEnd);
@@ -50,10 +42,8 @@ class Solution {
                 ans = Math.min(ans, firstEnd + prefixMinDuration[idx - 1]);
             }
         }
-
         return ans;
     }
-
     private int lowerBound(int[][] rides, int target) {
         int low = 0, high = rides.length;
 
@@ -66,7 +56,6 @@ class Solution {
                 low = mid + 1;
             }
         }
-
         return low;
     }
 }
