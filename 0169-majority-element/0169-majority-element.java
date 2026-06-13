@@ -1,23 +1,23 @@
 class Solution {
     public int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = 0;
 
-            int y=0;
-
-        Map<Integer,Integer> m1 = new LinkedHashMap<>();
-
-        for(int i=0;i<nums.length;i++)
-        {
-            m1.put(nums[i],m1.getOrDefault(nums[i],0)+1);
-        }
-        for(Map.Entry<Integer,Integer> x:m1.entrySet())
-        
-        {
-            if(x.getValue()>nums.length/2)
-            {
-                y= x.getKey();
+        for (int num : nums) {
+            // If count reaches 0, we pick a new candidate
+            if (count == 0) {
+                candidate = num;
+            }
+            
+            // If the current number matches the candidate, increment count.
+            // Otherwise, decrement count.
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
             }
         }
-        return y;
-        
+
+        return candidate;
     }
 }
