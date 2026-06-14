@@ -12,24 +12,20 @@ class Solution {
     public int pairSum(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
-
         // Find middle
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-
         // Reverse second half
         ListNode prev = null;
         ListNode curr = slow;
-
         while (curr != null) {
             ListNode nextNode = curr.next;
             curr.next = prev;
             prev = curr;
             curr = nextNode;
         }
-
         // Calculate maximum twin sum
         int maxSum = 0;
         ListNode first = head;
