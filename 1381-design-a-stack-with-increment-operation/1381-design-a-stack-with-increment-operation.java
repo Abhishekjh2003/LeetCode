@@ -24,6 +24,7 @@ class CustomStack {
         int limit = Math.min(k, top + 1);
         for (int i = 0; i < limit; i++) {
             stack[i] += val;
+            
         }
     }
 }
