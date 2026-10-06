@@ -1,7 +1,7 @@
 class Solution {
     public int minAddToMakeValid(String s) {
         int open = 0;
-        int additions = 0;
+        int add = 0;
         for (char ch : s.toCharArray()) {
             if (ch == '(') {
                 open++;
@@ -9,10 +9,10 @@ class Solution {
                 if (open > 0) {
                     open--;
                 } else {
-                    additions++;
+                    add++;
                 }
             }
         }
-        return additions + open;
+        return add + open;
     }
 }
