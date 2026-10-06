@@ -11,10 +11,8 @@ class Solution {
                 curr.next = list2;
                 list2 = list2.next;
             }
-
             curr = curr.next;
         }
-
         if (list1 != null) {
             curr.next = list1;
         } else {
